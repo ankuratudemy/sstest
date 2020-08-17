@@ -1,6 +1,6 @@
 ---
   class_name: "CheckWebsiteSensor"
-  entry_point: "CheckWebsiteSensor.py"
+  entry_point: "checkwebsitesensor.py"
   description: "Sensor that does a http get check for website status"
   trigger_types:
     -

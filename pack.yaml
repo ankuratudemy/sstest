@@ -1,10 +1,10 @@
 ---
 # Pack reference. It can only contain lowercase letters, digits and underscores.
 # This attribute is only needed if "name" attribute contains special characters.
-ref: checksite
+ref: checkwebsite
 # User-friendly pack name. If this attribute contains spaces or any other special characters, then
 # the "ref" attribute must also be specified (see above).
-name: Website status/restart
+name: checkwebsite
 # User-friendly pack description.
 description: This pack senses if a website is down and triggers an action to restart website service. Contains Sensors, rules, actions, aliases
 # Keywords which are used when searching for packs.

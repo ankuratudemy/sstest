@@ -29,7 +29,7 @@ class CheckWebsiteSensor(Sensor):
                 payload = {'website': self._webiste_url}
                 self._logger.info("Webiste {self._webiste_url} is down: Action triggered to start service")
                 self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
-            elif:
+            else:
                 self._logger.info(data['status'])
                 payload = {'website': self._webiste_url}
                 if data['status'] != 'OK':

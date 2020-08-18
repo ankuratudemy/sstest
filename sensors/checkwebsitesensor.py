@@ -24,10 +24,10 @@ class CheckWebsiteSensor(Sensor):
             r = requests.get(url = self._website_url) 
             # extracting data in json format 
             data = r.json()
-            self._logger.debug(data)
+            self._logger.info(data)
             payload = {'restart': True}
             #self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
-            eventlet.sleep(10)
+            eventlet.sleep(1)
 
     def cleanup(self):
         self._stop = True

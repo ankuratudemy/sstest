@@ -1,0 +1,7 @@
+---
+name: checkwebsitestatus
+pack: checkwebsite
+description: "Checks the status of a nodejs site"
+action_ref: "checkwebsite.checkwebsitestatus"
+formats:
+  - "checksitestatus {{appname}} on {{hosts}}"

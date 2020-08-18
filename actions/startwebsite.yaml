@@ -6,6 +6,8 @@ description: Greet StackStorm!
 enabled: true
 entry_point: ""
 parameters:
+    sudo:
+        default: true
     hosts:
         type: string
         description: "host to run  service start command"
@@ -15,7 +17,7 @@ parameters:
         type: string
         description: "cmd to run"
         required: true
-        default: "node {{path_to_js_file}}"
+        default: "/root/.nvm/versions/node/v14.8.0/bin/node {{path_to_js_file}}"
     path_to_js_file:
         description: "Path to javascript file on remote server to run e.g. /home/index.js"
         type: string

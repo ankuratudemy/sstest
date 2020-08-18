@@ -6,11 +6,6 @@ description: Greet StackStorm!
 enabled: true
 entry_point: ""
 parameters:
-    sudo:
-        description: "Run command with sudo"
-        type: boolean
-        immutable: true
-        default: true
     hosts:
         type: string
         description: "host to run  service start command"

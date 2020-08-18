@@ -21,14 +21,20 @@ class CheckWebsiteSensor(Sensor):
         while not self._stop:
             self._logger.debug('[checkwebsite sensor] Checking Website status... ')
             # sending get request and saving the response as response object 
-            r = requests.get(url = self._website_url) 
-            # extracting data in json format 
-            data = r.json()
-            self._logger.info(data['status'])
-            payload = {'website': self._webiste_url}
-            if data['status'] != 'OK':
+            try:
+                r = requests.get(url = self._website_url)
+                data = r.json()
+                # extracting data in json format
+            except requests.ConnectionError, e:
+                payload = {'website': self._webiste_url}
                 self._logger.info("Webiste {self._webiste_url} is down: Action triggered to start service")
                 self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
+            elif:
+                self._logger.info(data['status'])
+                payload = {'website': self._webiste_url}
+                if data['status'] != 'OK':
+                    self._logger.info("Webiste {self._webiste_url} is down: Action triggered to start service")
+                    self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
             eventlet.sleep(5)
 
     def cleanup(self):

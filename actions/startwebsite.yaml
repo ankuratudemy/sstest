@@ -14,14 +14,16 @@ parameters:
     hosts:
         type: string
         description: "host to run  service start command"
-        required: true       
+        required: true      
+        default: "{{config_context.website_host}}" 
     cmd:
         type: string
         description: "cmd to run"
         required: true
-        default: "nohup node {{path_to_js_file}} &"
+        default: "sudo nohup node {{path_to_js_file}} &"
     path_to_js_file:
         description: "Path to javascript file on remote server to run e.g. /home/index.js"
         type: string
         required: true
+        default: "/myapp/index.js"
         

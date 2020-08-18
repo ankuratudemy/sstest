@@ -26,7 +26,7 @@ class CheckWebsiteSensor(Sensor):
                 data = r.json()
                 # extracting data in json format
             except:
-                payload = {'website': self._webiste_url}
+                payload = {'website': self._website_url}
                 self._logger.info('Website %s is down: Action triggered to start service' % (self._website_url) )
                 self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
             else:

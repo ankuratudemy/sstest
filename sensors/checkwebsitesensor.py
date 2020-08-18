@@ -25,7 +25,7 @@ class CheckWebsiteSensor(Sensor):
                 r = requests.get(url = self._website_url)
                 data = r.json()
                 # extracting data in json format
-            except requests.ConnectionError, e:
+            except requests.exceptions.RequestException as e:
                 payload = {'website': self._webiste_url}
                 self._logger.info("Webiste {self._webiste_url} is down: Action triggered to start service")
                 self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)

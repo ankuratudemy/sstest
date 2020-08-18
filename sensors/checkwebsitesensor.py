@@ -19,7 +19,7 @@ class CheckWebsiteSensor(Sensor):
 
     def run(self):
         while not self._stop:
-            self._logger.debug('[checkwebsite sensor] Checking Website status... ')
+            self._logger.debug(f'[checkwebsite sensor] Checking {self._webiste_url} status... ')
             # sending get request and saving the response as response object 
             try:
                 r = requests.get(url = self._website_url)

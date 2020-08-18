@@ -9,18 +9,17 @@ class CheckWebsiteSensor(Sensor):
         super(CheckWebsiteSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
-        self._website_url = self._config['url']
+        self._website_url = None 
         self._trigger_name = 'websitedown'
         self._trigger_pack = 'checksite'
         self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
 
     def setup(self):
-        pass
-        
+        self._website_url = self._config['url']
 
     def run(self):
         while not self._stop:
-            self._logger.info('[checkwebsite sensor] Checking %s status...' % (self._webiste_url))
+            self._logger.info(f'[checkwebsite sensor] Checking {self._website_url} status... ')
             # sending get request and saving the response as response object 
             try:
                 r = requests.get(url = self._website_url)
@@ -28,13 +27,13 @@ class CheckWebsiteSensor(Sensor):
                 # extracting data in json format
             except requests.exceptions.RequestException as e:
                 payload = {'website': self._webiste_url}
-                self._logger.info(f'Website {self._webiste_url} is down: Action triggered to start service')
+                self._logger.info(f'Website {self._website_url} is down: Action triggered to start service')
                 self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
             else:
                 self._logger.info(data['status'])
-                payload = {'website': self._webiste_url}
+                payload = {'website': self._website_url}
                 if data['status'] != 'OK':
-                    self._logger.info(f'Webiste {self._webiste_url} is down: Action triggered to start service')
+                    self._logger.info(f'Webiste {self._website_url} is down: Action triggered to start service)
                     self.sensor_service.dispatch(trigger='checkwebsite.websitedown', payload=payload)
             eventlet.sleep(5)
 

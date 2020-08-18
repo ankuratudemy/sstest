@@ -1,4 +1,4 @@
-name: checkwebsite_websitedown
+name: on_checkwebsite_websitedown
 pack: checkwebsite
 description: Sample rule firing on checkwebsite.websitedown 
 enabled: true
@@ -6,4 +6,6 @@ trigger:
     type: checkwebsite.websitedown
 action:
     ref: checkwebsite.startwebsite
+    parameters:
+      website: None
     

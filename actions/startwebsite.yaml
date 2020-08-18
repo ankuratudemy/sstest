@@ -23,4 +23,9 @@ parameters:
         type: string
         required: true
         default: "myapp"
+    website:
+        type: string
+        description: "Website URL which went down"
+        required: true
+
         

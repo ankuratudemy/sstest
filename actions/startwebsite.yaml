@@ -1,0 +1,27 @@
+---
+name: startwebsite
+pack: checkwebsite
+runner_type: "remote-shell-cmd"
+description: Greet StackStorm!
+enabled: true
+entry_point: ""
+parameters:
+    sudo:
+        description: "Run command with sudo"
+        type: boolean
+        immutable: true
+        default: true
+    hosts:
+        type: string
+        description: "host to run  service start command"
+        required: true       
+    cmd:
+        type: string
+        description: "cmd to run"
+        required: true
+        default: "nohup node {{path_to_js_file}} &"
+    path_to_js_file:
+        description: "Path to javascript file on remote server to run e.g. /home/index.js"
+        type: string
+        required: true
+        

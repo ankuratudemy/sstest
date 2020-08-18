@@ -9,13 +9,14 @@ class CheckWebsiteSensor(Sensor):
         super(CheckWebsiteSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
-        self._webiste_url = None 
+        self._website_url = self._config['url']
         self._trigger_name = 'websitedown'
         self._trigger_pack = 'checksite'
         self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
 
     def setup(self):
-        self._website_url = self._config['url']
+        pass
+        
 
     def run(self):
         while not self._stop:

@@ -17,7 +17,7 @@ parameters:
         type: string
         description: "cmd to run"
         required: true
-        default: "pm2 status {{appname}}"
+        default: "pm2 status -m {{appname}} | grep status"
     appname:
         description: "Name of node app you want to start "
         type: string

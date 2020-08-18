@@ -17,7 +17,7 @@ parameters:
         type: string
         description: "cmd to run"
         required: true
-        default: "pm2 start {{appname}}"
+        default: "/root/.nvm/versions/node/v14.8.0/bin/pm2 start {{appname}}"
     appname:
         description: "Name of node app you want to start "
         type: string

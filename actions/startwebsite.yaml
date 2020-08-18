@@ -2,7 +2,7 @@
 name: startwebsite
 pack: checkwebsite
 runner_type: "remote-shell-cmd"
-description: Greet StackStorm!
+description: Action to run remote shell command and start pm2 nodejs application by appname 
 enabled: true
 entry_point: ""
 parameters:
@@ -10,17 +10,17 @@ parameters:
         default: true
     hosts:
         type: string
-        description: "host to run  service start command"
+        description: "host to run  pm2 start command"
         required: true      
         default: "{{config_context.website_host}}" 
     cmd:
         type: string
         description: "cmd to run"
         required: true
-        default: "nohup /root/.nvm/versions/node/v14.8.0/bin/node {{path_to_js_file}} &"
-    path_to_js_file:
-        description: "Path to javascript file on remote server to run e.g. /home/index.js"
+        default: "pm2 start {{appname}}"
+    appname:
+        description: "Name of node app you want to start "
         type: string
         required: true
-        default: "/myapp/index.js"
+        default: "myapp"
         

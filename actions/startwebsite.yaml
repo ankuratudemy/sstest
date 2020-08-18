@@ -20,7 +20,7 @@ parameters:
         type: string
         description: "cmd to run"
         required: true
-        default: "nohup /root/.nvm/versions/node/v14.8.0/bin/node {{path_to_js_file}} &"
+        default: "node {{path_to_js_file}}"
     path_to_js_file:
         description: "Path to javascript file on remote server to run e.g. /home/index.js"
         type: string

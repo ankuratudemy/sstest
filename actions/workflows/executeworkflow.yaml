@@ -72,4 +72,4 @@ tasks:
           - abcd: <% result() %>
 
 output:
-  - result: <% ctx().abcd %>
+  - result: <% ctx('abcd') %>

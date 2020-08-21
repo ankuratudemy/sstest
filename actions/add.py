@@ -8,5 +8,8 @@ class addAction(Action):
         print(operand2)
 
         if operand1 and operand2:
+            self.logger.info('Add action successfully completed with operand1 = %s and operand2= %s') % (operand1,operand2))
             return (True, operand1+operand2)
-        return (False, 0)
+        else:
+            self.logger.error('Add action Failed with operand1 = %s and operand2= %s') % (operand1,operand2))
+            return (False, 0)

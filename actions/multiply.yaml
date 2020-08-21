@@ -1,0 +1,14 @@
+name: "multiply_action"
+runner_type: "python-script"
+description: "multiply two numbers"
+enabled: true
+entry_point: "multiply.py"
+parameters:
+    operand1:
+        type: integer
+        description: "operand 1"
+        required: true
+    operand2:
+        type: integer
+        description: "operand 2"
+        required: true

@@ -5,12 +5,10 @@ enabled: true
 entry_point: "add.py"
 parameters:
     operand1:
-        type: intenger
+        type: integer
         description: "operand 1"
         required: true
-        position: 0
     operand2:
-        type: intenger
+        type: integer
         description: "operand 2"
         required: true
-        position: 0

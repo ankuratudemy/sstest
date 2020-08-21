@@ -11,7 +11,7 @@ input:
 tasks:
   task1:
     # Fully qualified name (pack.name) for the action.
-    action: checkwebsite.add 
+    action: checkwebsite.add_action
 
     # Assign input arguments to the action from the context.
     input:
@@ -44,7 +44,7 @@ tasks:
   task2:
     # Short hand is supported for input arguments. Arguments can be
     # delimited either by space, comma, or semicolon.
-    action: checkwebsite.add operand1=<% ctx("c") %> operand2=<% ctx("d") %>
+    action: checkwebsite.add_action operand1=<% ctx("c") %> operand2=<% ctx("d") %>
     next:
       - when: <% succeeded() %>
 
@@ -59,7 +59,7 @@ tasks:
     # Join is specified for this task. This task will be invoked
     # when the condition of all inbound task transitions are met.
     join: all
-    action: checkwebsite.multiply operand1=<% ctx('ab') %> operand2=<% ctx('cd') %>
+    action: checkwebsite.multiply_action operand1=<% ctx('ab') %> operand2=<% ctx('cd') %>
     next:
       - when: <% succeeded() %>
         publish: msg="task3 done" abcd=<% result() %>

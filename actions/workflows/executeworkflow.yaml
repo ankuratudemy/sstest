@@ -10,9 +10,6 @@ input:
 vars:
   - ab: null
   - cd: null
-  - abcd: null
-output:
-  - result: <% ctx().abcd %>
 
 tasks:
   task1:
@@ -67,5 +64,7 @@ tasks:
     action: checkwebsite.multiply_action operand1=<% ctx("ab") %> operand2=<% ctx("cd") %>
     next:
       - when: <% succeeded() %>
-        publish: msg="task3 done" abcd=<% result().output.result %>
-        
+        publish: abcd=<% result() %>
+
+output:
+  - result: <% ctx().abcd %>

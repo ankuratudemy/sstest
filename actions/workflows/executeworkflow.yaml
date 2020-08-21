@@ -44,7 +44,7 @@ tasks:
         # case), then the subsequent task becomes a barrier and
         # will be invoked when condition of prior tasks are met.
         do:
-          - task2
+          - task3
 
   task2:
     # Short hand is supported for input arguments. Arguments can be
@@ -63,16 +63,9 @@ tasks:
         do: task3
 
   task3:
+    join: all
     action: checkwebsite.multiply_action operand1=<% ctx("ab") %> operand2=<% ctx("cd") %>
     next:
       - when: <% succeeded() %>
-        publish: 
-          - msg: task3 done
-          - abcd: <% result() %>
-        do: task4
-  task4:
-    action: core.echo message=<% ctx('abcd') %>
-    next:
-      - when: <% succeeded() %>
-        publish: 
-          - msg: task4 done
+        publish: msg="task3 done" abcd=<% result() %>
+        

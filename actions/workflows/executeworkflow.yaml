@@ -37,7 +37,7 @@ tasks:
         # task (i.e task1 and task2 transition to task3 in this
         # case), then the subsequent task becomes a barrier and
         # will be invoked when condition of prior tasks are met.
-        do:
+      #  do:
           - log
           - task3
 
@@ -53,7 +53,7 @@ tasks:
         publish: msg="task2 done", cd=<% result() %>
 
         # Short hand with comma delimited list is supported.
-        do: log, task3
+       # do: log, task3
 
   task3:
     # Join is specified for this task. This task will be invoked
@@ -63,7 +63,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish: msg="task3 done" abcd=<% result() %>
-        do: log
+       # do: log
 
   # Define a reusable task to log progress. Although this task is
   # referenced by multiple tasks, since there is no join defined,

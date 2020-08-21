@@ -10,6 +10,7 @@ input:
 vars:
   - ab: null
   - cd: null
+  - abcd: null
 
 tasks:
   task1:

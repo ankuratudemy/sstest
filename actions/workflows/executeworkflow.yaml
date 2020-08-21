@@ -63,7 +63,16 @@ tasks:
         do: task3
 
   task3:
-    action: checkwebsite.multiply_action operand1=<% ctx('ab') %> operand2=<% ctx('cd') %>
+    action: checkwebsite.multiply_action operand1=<% ctx("ab") %> operand2=<% ctx("cd") %>
     next:
       - when: <% succeeded() %>
-        publish: abcd=<% result() %>
+        publish: 
+          - msg: task3 done
+          - abcd: <% result() %>
+        do: task4
+  task4:
+    action: core.echo message=<% ctx('greeting') %>
+    next:
+      - when: <% succeeded() %>
+        publish: 
+          - msg: task4 done

@@ -1,0 +1,23 @@
+name: executeworkflowaction
+pack: checkwebsite
+description: A sample sequential workflow.
+runner_type: orquesta
+entry_point: workflows/executeworkflow.yaml
+enabled: true
+parameters:
+  a:
+    required: true
+    type: integer
+    default: 0
+  b:
+    required: true
+    type: integer
+    default: 0
+  c:
+    required: true
+    type: integer
+    default: 0
+  d:
+    required: true
+    type: integer
+    default: 0

@@ -7,6 +7,10 @@ input:
   - b: 0
   - c: 0
   - d: 0
+vars:
+  - ab: null
+  - cd: null
+  - abcd: null
 
 tasks:
   task1:
@@ -38,7 +42,6 @@ tasks:
         # case), then the subsequent task becomes a barrier and
         # will be invoked when condition of prior tasks are met.
         do:
-          - log
           - task3
 
   task2:
@@ -50,10 +53,12 @@ tasks:
 
         # Short hand is supported for publishing variables. Variables
         # can be delimited either by space, comma, or semicolon.
-        publish: msg="task2 done", cd=<% result() %>
+        publish:
+          - msg: task2 done
+          - cd: <% result() %>
 
         # Short hand with comma delimited list is supported.
-        do: log, task3
+        do: task3
 
   task3:
     # Join is specified for this task. This task will be invoked
@@ -62,14 +67,9 @@ tasks:
     action: checkwebsite.multiply_action operand1=<% ctx('ab') %> operand2=<% ctx('cd') %>
     next:
       - when: <% succeeded() %>
-        publish: msg="task3 done" abcd=<% result() %>
-        do: log
-
-  # Define a reusable task to log progress. Although this task is
-  # referenced by multiple tasks, since there is no join defined,
-  # this task is not a barrier and will be invoked separately.
-  log:
-    action: core.log message=<% ctx(abcd) %>
+        publish: 
+          - msg: task3 done
+          - abcd: <% result() %>
 
 output:
   - result: <% ctx().abcd %>

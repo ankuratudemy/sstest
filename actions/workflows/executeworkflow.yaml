@@ -64,7 +64,8 @@ tasks:
     action: checkwebsite.multiply_action operand1=<% ctx("ab") %> operand2=<% ctx("cd") %>
     next:
       - when: <% succeeded() %>
-        publish: abcd=<% result() %>
+        publish:
+          - abcd: <% result() %>
 
 output:
-  - result: <% ctx().abcd %>
+  - result: <% ctx("abcd") %>

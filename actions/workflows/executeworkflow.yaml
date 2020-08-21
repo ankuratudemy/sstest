@@ -42,7 +42,7 @@ tasks:
         # case), then the subsequent task becomes a barrier and
         # will be invoked when condition of prior tasks are met.
         do:
-          - task3
+          - task2
 
   task2:
     # Short hand is supported for input arguments. Arguments can be
@@ -61,9 +61,6 @@ tasks:
         do: task3
 
   task3:
-    # Join is specified for this task. This task will be invoked
-    # when the condition of all inbound task transitions are met.
-    join: all
     action: checkwebsite.multiply_action operand1=<% ctx('ab') %> operand2=<% ctx('cd') %>
     next:
       - when: <% succeeded() %>
@@ -72,4 +69,4 @@ tasks:
           - abcd: <% result() %>
 
 output:
-  - result: <% ctx('abcd') %>
+  - result: <% ctx().abcd %>

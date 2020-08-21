@@ -33,7 +33,7 @@ tasks:
         # its result.
         publish:
           - msg: task1 done
-          - ab: <% result() %>
+          - ab: <% result().result %>
 
         # List the tasks to run next. Each task will be invoked
         # sequentially. If more than one tasks transition to the
@@ -55,7 +55,7 @@ tasks:
         # can be delimited either by space, comma, or semicolon.
         publish:
           #- msg: task2 done
-          - cd: <% result() %>
+          - cd: <% result().result %>
 
         # Short hand with comma delimited list is supported.
         do: task3
@@ -67,6 +67,6 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish: 
-          - abcd: <% result() %>
+          - abcd: <% result().result %>
 output:
-  - result: <% ctx(abcd) %>
+  - result: <% ctx("abcd") %>

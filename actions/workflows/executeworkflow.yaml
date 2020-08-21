@@ -11,6 +11,8 @@ vars:
   - ab: null
   - cd: null
   - abcd: null
+output:
+  - result: <% ctx().abcd %>
 
 tasks:
   task1:
@@ -54,7 +56,7 @@ tasks:
         # Short hand is supported for publishing variables. Variables
         # can be delimited either by space, comma, or semicolon.
         publish:
-          - msg: task2 done
+          #- msg: task2 done
           - cd: <% result() %>
 
         # Short hand with comma delimited list is supported.
@@ -67,6 +69,3 @@ tasks:
         publish: 
           - msg: task3 done
           - abcd: <% result() %>
-
-output:
-  - result: <% ctx().abcd %>

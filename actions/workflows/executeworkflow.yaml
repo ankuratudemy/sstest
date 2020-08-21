@@ -11,8 +11,7 @@ input:
 tasks:
   task1:
     # Fully qualified name (pack.name) for the action.
-    action: checkwebsite.add
-    .add
+    action: checkwebsite.add 
 
     # Assign input arguments to the action from the context.
     input:

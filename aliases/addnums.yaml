@@ -1,0 +1,7 @@
+---
+name: addnums
+pack: checkwebsite
+description: "Adds two numbers"
+action_ref: "checkwebsite.add_action"
+formats:
+  - "add {{operand1}} and {{operand2}}"

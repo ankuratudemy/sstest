@@ -4,6 +4,10 @@ description: Sample rule firing on checkwebsite.websitedown
 enabled: true
 trigger:
     type: checkwebsite.websitedown
+criteria:
+        trigger.body.status:
+            pattern: "OK"
+            type: "equals"
 action:
     ref: checkwebsite.startwebsite
     parameters:

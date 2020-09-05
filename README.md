@@ -1,3 +1,1 @@
-# sstest
-# sstest
-# basket-with-offers
+StackStorm - sample pack 
